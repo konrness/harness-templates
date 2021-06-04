@@ -1,0 +1,16 @@
+harnessApiVersion: '1.0'
+type: SHELL_SCRIPT
+scriptString: "$pathPattern = \"${pathPattern}\"\n\n$tokenList = @{\n  db_user = '${serviceVariable.dbuser}'\n\
+  \  db_password = '${serviceVariable.dbpassword}'\n}\n\nWrite-Host \"= Path Pattern:\
+  \ $pathPattern =\"\n$files = Get-ChildItem $pathPattern\n\nforeach ($file in $files)\
+  \ {\n  $contents = Get-Content -Path $file -RAW\n\n  Write-Host \"== $file Original\
+  \ ==\"\n  Write-Host $contents\n  \n  foreach ( $token in $tokenList.GetEnumerator())\n\
+  \  {\n    $pattern = '\\#{{{0}}}' -f $token.key\n    Write-Host \"Replace Pattern:\
+  \ $pattern\"\n    Write-Host \"Replace Value: \" $token.value\n    $contents = $contents\
+  \ -replace $pattern, $token.value\n  }\n  Set-Content -Path $file -Value $contents\n\
+  \  \n  Write-Host \"== $file Modified ==\"\n  Write-Host $contents\n}"
+scriptType: POWERSHELL
+timeoutMillis: 600000
+variables:
+- name: pathPattern
+  value: ./*.txt
