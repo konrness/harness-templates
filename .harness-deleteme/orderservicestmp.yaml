@@ -20,6 +20,7 @@ pipeline:
                           type: DockerRegistry
                           spec:
                             tag: <+input>
+                serviceRef: nginx
   tags: {}
   projectIdentifier: Konr
   orgIdentifier: SE_Sandbox
