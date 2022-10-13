@@ -20,7 +20,7 @@ pipeline:
                         primary:
                           type: DockerRegistry
                           spec:
-                            tag: stable
+                            tag: <+input>
   tags: {}
   projectIdentifier: Konr
   orgIdentifier: SE_Sandbox
