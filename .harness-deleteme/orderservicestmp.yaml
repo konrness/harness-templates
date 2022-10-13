@@ -1,5 +1,5 @@
 pipeline:
-  name: order-services-tmp-rename
+  name: order-services-tmp-rename-for-mario
   identifier: orderservicestmp
   template:
     templateRef: E2E_Pipeline_Template
