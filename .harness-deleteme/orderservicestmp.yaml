@@ -1,5 +1,5 @@
 pipeline:
-  name: order-services-tmp
+  name: order-services-tmp-rename
   identifier: orderservicestmp
   template:
     templateRef: E2E_Pipeline_Template
