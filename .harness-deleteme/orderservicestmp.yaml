@@ -1,0 +1,25 @@
+pipeline:
+  name: order-services-tmp
+  identifier: orderservicestmp
+  template:
+    templateRef: E2E_Pipeline_Template
+    versionLabel: "1"
+    templateInputs:
+      stages:
+        - stage:
+            identifier: Dev
+            type: Deployment
+            spec:
+              service:
+                serviceInputs:
+                  serviceDefinition:
+                    type: Kubernetes
+                    spec:
+                      artifacts:
+                        primary:
+                          type: DockerRegistry
+                          spec:
+                            tag: <+input>
+  tags: {}
+  projectIdentifier: Konr
+  orgIdentifier: SE_Sandbox
